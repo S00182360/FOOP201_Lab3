@@ -6,7 +6,35 @@
         xmlns:local="clr-namespace:Exercise3"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <local:Student x:Key="localStudent"
+                       Name="John Smith"
+                       ID="S1234567"
+                       Email="s1234567@mail.itsligo.ie"
+                       PhoneNumber="086 123 4567" >
+        </local:Student>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Margin="20,20,20,20">
+            <Label>Name:</Label>
+            <Label>Student Number:</Label>
+            <Label>Email:</Label>
+            <Label>Phone:</Label>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Margin="20,20,20,20">
+            <TextBlock x:Name="tbkName"
+                       Text="{Binding Path=Name, Source={StaticResource localStudent}, Mode=OneWay}" ></TextBlock>
+            <TextBlock x:Name="tbkID"
+                       Text="{Binding Path=ID, Source={StaticResource localStudent}, Mode=OneWay}" ></TextBlock>
+            <TextBlock x:Name="tbkEmail"
+                       Text="{Binding Path=Email, Source={StaticResource localStudent}, Mode=OneWay}" ></TextBlock>
+            <TextBlock x:Name="tbkPhone"
+                       Text="{Binding Path=PhoneNumber, Source={StaticResource localStudent}, Mode=OneWay}" ></TextBlock>
+        </StackPanel>
     </Grid>
 </Window>
